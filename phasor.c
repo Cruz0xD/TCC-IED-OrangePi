@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <complex.h>
+#include "mergingUnit.h"
+#include "phasor.h"
+#include "fft.h"
+
+#define PI 3.14159265358979323846
+
+/**
+ * @brief Calcula o fasor de uma janela de amostras utilizando a Transformada Rápida de Fourier.
+ */
+static Phasor compute_phasor(double *buffer) {
+    double complex fft_output[BUFFER_SIZE];
+
+    // Aplica a FFT ao sinal de entrada
+    fft(buffer, fft_output, BUFFER_SIZE);
+
+    // Determina a componente de maior magnitude no espectro de frequência
+    int max_index = 0;
+    double max_magnitude = 0.0;
+    for (int i = 0; i < BUFFER_SIZE / 2; i++) {
+        double magnitude = cabs(fft_output[i]);
+        if (magnitude > max_magnitude) {
+            max_magnitude = magnitude;
+            max_index = i;
+        }
+    }
+
+    return (Phasor){
+        .magnitude = max_magnitude * (2.0 / BUFFER_SIZE),
+        .phase = carg(fft_output[max_index]) * (180.0 / PI)
+    };
+}
+
+/**
+ * @brief Obtém os fasores de todos os canais da Merging Unit de uma só vez.
+ * 
+ * @param mode Indica se é canal de corrente (0) ou tensão (1)
+ * @return Ponteiro para vetor estático com NUM_CHANNELS fasores
+ */
+Phasor* get_phasors() {
+    static Phasor phasors[NUM_CHANNELS];
+
+    // Obtém a matriz de amostras
+    double **matrix = sv_read();
+    if (matrix == NULL) {
+        printf("Erro: Não foi possível obter a matriz de amostras.\n");
+        // Retorna vetor com fasores nulos
+        for (int i = 0; i < NUM_CHANNELS; i++) {
+            phasors[i] = (Phasor){0.0, 0.0};
+        }
+        return phasors;
+    }
+
+    // Calcula o fasor de cada canal
+    for (int ch = 0; ch < NUM_CHANNELS; ch++) {
+        phasors[ch] = compute_phasor(matrix[ch]);
+    }
+
+    return phasors;
+}
+
