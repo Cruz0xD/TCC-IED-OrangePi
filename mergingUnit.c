@@ -15,7 +15,7 @@ double** sv_read() {
     char line[MAX_LINE_LENGTH];
 
     if (file == NULL) {
-        file = fopen("dados_uni.txt", "r");
+        file = fopen("dados_falta_fase-fase_AB.txt", "r"); // Primeiras 3 colunas: Tensões fases A, B e C, ultimas 3 colunas correntes fases A, B e C
         if (file == NULL) {
             perror("Erro ao abrir o arquivo");
             return NULL;
@@ -62,7 +62,7 @@ double** sv_read() {
         count++;
     }
 
-    call_count++;
+    //call_count++;
     //printf("Chamada%d - current_line = %ld\n", call_count, current_line);
     /*
     printf("Chamada%d - current_line = %ld\n", call_count, current_line);
