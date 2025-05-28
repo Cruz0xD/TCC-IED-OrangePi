@@ -113,6 +113,6 @@ sudo chrt -f 80 taskset -c 2 ./IED_Compser
 - O parâmetro `-Iincludes_libiec61850` indica o diretório onde estão os arquivos headers da libiec61850.
 - O parâmetro `-Llibiec61850-1.5.1/build` indica o diretório onde está a biblioteca compilada.
 - O parâmetro `-lwiringPi` é necessário apenas para compilação no Orange Pi.
-- A execução com `sudo chrt -f 80 taskset -c 2` garante prioridade real-time e afinitidade de CPU para melhor desempenho.
+- A execução com `sudo chrt -f 80 taskset -c 2` garante prioridade real-time e afinidade de CPU para melhor desempenho.
 
 ---
