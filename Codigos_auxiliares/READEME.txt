@@ -1,0 +1,22 @@
+O arquivo dados.adf contém os dados de tensão ou corrente exportados pelo Plot do ATP (Alternative Transients Program) referentes ao sistema elétrico analisado.
+
+Para utilização com o algoritmo de proteção por distância, os dados devem ser salvos na seguinte ordem: VA, VB, VC, IA, IB, IC. Um exemplo de cabeçalho típico nesse caso seria:
+
+// ADF file created by "MC's PlotXY" program  
+t    vX0004a    vX0004b    vX0004c    iX0004aX0003a    iX0004bX0003b    iX0004cX0003c
+
+
+
+
+Para utilização com o algoritmo de proteção de linhas compensadas, os dados devem ser salvos na seguinte ordem: VA1, VB1, VC1, VA2, VB2, VC2. Um exemplo de cabeçalho típico nesse caso seria:
+
+// ADF file created by "MC's PlotXY" program  
+t    vVba    vVbb    vVbc    vVla    vVlb    vVlc
+
+Após exportar os dados do ATP para o arquivo dados.adf, execute o script Python correspondente para formatar os dados de acordo com o algoritmo desejado. Use o script formatador_dados_atp_distancia.py para o algoritmo de distância ou formatador_dados_atp_compser.py para o algoritmo de linhas compensadas.
+
+
+Além disso, o script plot_diagrama_RX.py é responsável por plotar os diagramas R-X com base no arquivo impedancias.txt, que deve ser gerado previamente pelo código Impedancias.c, disponível na pasta Distancia. 
+
+O script compser_plot.py gera os gráficos da variação angular das razões dos fasores de tensão em função do número da janela de amostragem, utilizando o arquivo angulos.txt, que deve ser previamente gerado pelo código compser.c.
+
