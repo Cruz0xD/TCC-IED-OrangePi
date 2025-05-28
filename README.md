@@ -1,4 +1,4 @@
-# Projeto Relé de Distância - Compilação e Execução
+# Projeto IED - Compilação e Execução
 
 Este documento descreve os passos para compilar e executar os códigos fonte do projeto, que utilizam a biblioteca **libiec61850** e estão preparados para rodar tanto em computadores convencionais quanto em Orange Pi.
 
