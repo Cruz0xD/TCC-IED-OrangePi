@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <complex.h>
-#include "mergingUnit.h"
+#include "dataModule.h"
 #include "phasor.h"
 #include "fft.h"
 
@@ -32,13 +32,13 @@ static Phasor compute_phasor(double *buffer) {
 }
 
 
-// Obtém os fasores de todos os canais da Merging Unit de uma só vez.
+// Obtém os fasores de todos os canais do módulo da aquisição de dados (simulado) de uma só vez.
 
 Phasor* get_phasors() {
     static Phasor phasors[NUM_CHANNELS];
 
     // Obtém a matriz de amostras
-    double **matrix = sv_read();
+    double **matrix = data_read();
     if (matrix == NULL) {
         printf("Erro: Não foi possível obter a matriz de amostras.\n");
         // Retorna vetor com fasores nulos

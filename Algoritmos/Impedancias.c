@@ -2,17 +2,17 @@
 #include <stdlib.h>
 #include <complex.h>
 #include <stdbool.h>
-#include "mergingUnit.h"
+#include "dataModule.h"
 #include "phasor.h"
 
-// Comando para rodar o código: gcc Algoritmos/Impedancias.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c  -o Impedancias -lm
+// Comando para rodar o código: gcc Algoritmos/Impedancias.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c  -o Impedancias -lm
 // Comando para executar: sudo chrt -f 80 taskset -c 2 ./Impedancias
 
 #define ZL0 1.06955250923
 #define ZL1 0.318744239164
 #define K0 ((ZL0 - ZL1) / (3.0 * ZL1))
 #define L 200
-#define NUM_ITERATIONS 60 // Ajuste conforme o número de linhas do arquivo "dados_ATP.txt" em mergingUnit.c dividido pelo tamanho da janela em mergingUnit.h
+#define NUM_ITERATIONS 60 // Ajuste conforme o número de linhas do arquivo "dados.txt" em dataModule.c dividido pelo tamanho da janela em dataModule.h
 
 typedef struct {
     double R;

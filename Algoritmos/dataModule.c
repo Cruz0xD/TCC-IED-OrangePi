@@ -1,21 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "mergingUnit.h"
+#include "dataModule.h"
 
 // Variáveis estáticas para controle interno
 static long current_line = 0; // Linha atual sincronizada
 static FILE* file = NULL;
 static int call_count = 0;    // Contador de chamadas
 
-// Função sv_read retorna matriz [NUM_CHANNELS][BUFFER_SIZE]
-double** sv_read() {
+// Função data_read retorna matriz [NUM_CHANNELS][BUFFER_SIZE]
+double** data_read() {
     static double buffer[NUM_CHANNELS][BUFFER_SIZE];
     static double* matrix_ptrs[NUM_CHANNELS]; // Ponteiros para as linhas
     char line[MAX_LINE_LENGTH];
 
     if (file == NULL) {
-        file = fopen("Dados/dados_ATP.txt", "r");  // Abre o arquivo de dados da simulação do ATP
+        file = fopen("Dados/dados.txt", "r");  // Abre o arquivo de dados da simulação do ATP
         if (file == NULL) {
             perror("Erro ao abrir o arquivo");
             return NULL;
@@ -62,7 +62,7 @@ double** sv_read() {
         count++;
     }
 
-    // Imprime qual chamada da função sv_read, ou seja, qual o número atual da janela de amostras. Comente se necessário
+    // Imprime qual chamada da função data_read, ou seja, qual o número atual da janela de amostras. Comente se necessário
     call_count++;
     printf("Chamada%d - current_line = %ld\n", call_count, current_line);
 

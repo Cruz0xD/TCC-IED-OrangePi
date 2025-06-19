@@ -36,7 +36,7 @@ Os códigos fonte estão localizados na pasta `Algoritmos`. As instruções para
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Distancia21_A.c Algoritmos/goose_pub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Distancia21_A.c Algoritmos/goose_pub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -liec61850 -o IED_A -lm -lpthread
 ```
 
@@ -44,7 +44,7 @@ Algoritmos/Distancia21_A.c Algoritmos/goose_pub.c Algoritmos/fft.c Algoritmos/ph
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Distancia21_A.c Algoritmos/goose_pub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Distancia21_A.c Algoritmos/goose_pub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -liec61850 -o IED_A -lm -lpthread -lwiringPi
 ```
 
@@ -62,7 +62,7 @@ sudo chrt -f 80 taskset -c 2 ./IED_A
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -liec61850 -o IED_B -lm -lpthread
 ```
 
@@ -70,7 +70,7 @@ Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/ph
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -liec61850 -o IED_B -lm -lpthread -lwiringPi
 ```
 
@@ -88,7 +88,7 @@ sudo chrt -f 80 taskset -c 2 ./IED_B
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Compser.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Compser.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -o IED_Compser -lm
 ```
 
@@ -96,7 +96,7 @@ Algoritmos/Compser.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit
 
 ```bash
 gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build \
-Algoritmos/Compser.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c \
+Algoritmos/Compser.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c \
 -o IED_Compser -lm -lwiringPi
 ```
 
@@ -113,6 +113,6 @@ sudo chrt -f 80 taskset -c 2 ./IED_Compser
 - O parâmetro `-Iincludes_libiec61850` indica o diretório onde estão os arquivos headers da libiec61850.
 - O parâmetro `-Llibiec61850-1.5.1/build` indica o diretório onde está a biblioteca compilada.
 - O parâmetro `-lwiringPi` é necessário apenas para compilação no Orange Pi.
-- A execução com `sudo chrt -f 80 taskset -c 2` garante prioridade real-time e afinidade de CPU para melhor desempenho.
+- A execução com `sudo chrt -f 80 taskset -c 2` garante prioridade para melhor desempenho.
 
 ---

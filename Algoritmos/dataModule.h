@@ -1,5 +1,5 @@
-#ifndef MERGING_UNIT_H_  
-#define MERGING_UNIT_H_
+#ifndef DATA_MODULE_H_  
+#define DATA_MODULE_H_
 
 #define MAX_LINE_LENGTH 256
 
@@ -15,7 +15,7 @@
 /** @brief Relação de transformação de potêncial. */
 #define RTP 500000 / 115 // Mudar de acordo com o sistema elétrico analisado
 
-double** sv_read(); 
+double** data_read(); 
 
-#endif  // MERGING_UNIT_H_
+#endif 
 

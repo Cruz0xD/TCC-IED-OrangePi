@@ -3,10 +3,10 @@ clc; close all; clear all;
 % Definição do intervalo de XL2 de 10⁻³ a 3 p.u. para permitir escala log
 XL2 = logspace(-3, log10(3), 1000);  
 R2 = 0.1 * XL2;  % R2 é 10% de XL2
-XC = -0.01017;   % Reatância capacitiva
+XC = 0.01017;   % Reatância capacitiva
 
 % Cálculo de K
-K = (1j*XC + R2 + 1j*XL2) ./ (R2 + 1j*XL2);
+K = (-1j*XC + R2 + 1j*XL2) ./ (R2 + 1j*XL2);
 
 % Cálculo da magnitude e fase de K
 K_mag = abs(K);           % Magnitude

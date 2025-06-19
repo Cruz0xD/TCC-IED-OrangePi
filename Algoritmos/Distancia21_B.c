@@ -9,11 +9,11 @@
 // #include <wiringPi.h> // Comente essa linha ao rodar o código em um computador convencional
 
 // Comandos para rodar o código em um computador: 
-// Convencional: gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c -liec61850 -o IED_B -lm -lpthread
-// Orange Pi: gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/mergingUnit.c -liec61850 -o IED_B -lm -lpthread -lwiringPi
+// Convencional: gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c -liec61850 -o IED_B -lm -lpthread
+// Orange Pi: gcc -Wall -Iincludes_libiec61850 -Llibiec61850-1.5.1/build Algoritmos/Distancia21_B.c Algoritmos/goose_sub.c Algoritmos/fft.c Algoritmos/phasor.c Algoritmos/dataModule.c -liec61850 -o IED_B -lm -lpthread -lwiringPi
 // Para executar: sudo chrt -f 80 taskset -c 2 ./IED_B
 
-#include "mergingUnit.h"
+#include "dataModule.h"
 #include "phasor.h"
 #include "goose_sub.h"  // O IED B apenas escuta as mensagens GOOSE
 

@@ -3,10 +3,10 @@ clc; close all; clear all;
 % Definição do intervalo de XL1 de 10⁻³ a 3 p.u. para permitir escala log
 XL1 = logspace(-3, log10(3), 1000);  
 R1 = 0.1 * XL1;  % R1 é 10% de XL1
-XC = -0.01017;   % Reatância capacitiva
+XC = 0.01017;   % Reatância capacitiva
 
 % Cálculo de K
-K = (R1 + 1j*XL1) ./ (1j*XC + R1 + 1j*XL1);
+K = (R1 + 1j*XL1) ./ (-1j*XC + R1 + 1j*XL1);
 
 % Cálculo da magnitude e fase de K
 K_mag = abs(K);           % Magnitude
@@ -28,3 +28,4 @@ xlabel('X''_{L1}  (p.u.)');
 ylabel('\angle V1/V2 (graus)');
 title('Fase de V1/V2');
 grid on;
+

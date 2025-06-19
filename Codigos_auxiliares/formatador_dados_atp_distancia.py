@@ -16,7 +16,7 @@ import numpy as np
 # Constantes
 RTP = 500000 / 115  # Escala para tensão
 RTC = 600 / 5       # Escala para corrente
-fs = 1920          # Frequência de amostragem. Ajuste aqui conforme o tamanho da janela de amostras definida em mergingUnit.h
+fs = 1920          # Frequência de amostragem. Ajuste aqui conforme o tamanho da janela de amostras definida em dataModule.h
 
 # Ler arquivo de dados
 with open("dados.adf", "r") as file:
@@ -56,19 +56,19 @@ iB_interp = np.interp(t_novo, tempos, iB)
 iC_interp = np.interp(t_novo, tempos, iC)
 
 # Combina os dados e salva no formato tabulado
-with open("dados.txt", "w") as f:
+with open("dados_tmp.txt", "w") as f:
     for i in range(len(t_novo)):
         f.write(f"{vA_interp[i]:.6f}\t{vB_interp[i]:.6f}\t{vC_interp[i]:.6f}\t"
                 f"{iA_interp[i]:.6f}\t{iB_interp[i]:.6f}\t{iC_interp[i]:.6f}\n")
 
-print("Arquivo 'dados.txt' gerado com sucesso!")
+print("Arquivo 'dados_tmp.txt' gerado com sucesso!")
 
 # Deixa os dados nesse formato:
 # 103.032870,-40.532670,-62.500200,-4.923850,2.757600,2.166242
 # 98.578882,-21.109001,-77.469980,-4.895847,1.906019,2.989828
 
 
-def uniformizar_dados(entrada="Codigos_auxiliares/dados.txt", saida="Dados/dados_ATP.txt"):
+def uniformizar_dados(entrada="Codigos_auxiliares/dados_tmp.txt", saida="Dados/dados.txt"):
     with open(entrada, 'r') as fin, open(saida, 'w') as fout:
         for linha in fin:
             # Remove espaços no começo/fim e separa por qualquer espaço/tab
@@ -81,5 +81,4 @@ def uniformizar_dados(entrada="Codigos_auxiliares/dados.txt", saida="Dados/dados
 
 
 # Executar
-# Esse formato "dados_Uniformizados.txt" que será usado em mergingUnit.c
 uniformizar_dados()
